@@ -1,0 +1,65 @@
+<apex:page controller="SearchAccountAndContactController" showHeader="true" sidebar="true" docType="html-5.0">
+    <apex:form >
+        <apex:pageBlock title="Task 3">
+            <apex:inputText value="{!keySearch}" html-placeholder="Enter keyword" >
+                <apex:actionSupport event="onkeyup"  action="{!searchData}" reRender="result" />
+            </apex:inputText>
+            
+            <apex:commandButton value="Search" action="{!searchData}" rerender="result" status="actionStatus"/>
+            <apex:actionStatus id="actionStatus">
+                <apex:facet name="start">
+                    <apex:outputText value="Loading..."/>
+                </apex:facet>
+            </apex:actionStatus>
+        </apex:pageBlock>
+
+        <apex:pageBlock title="RESULT" id="result">
+            <apex:pageMessages id="message" ></apex:pageMessages>
+            <div id="responseErrors"></div>
+            <apex:pageBlockTable value="{!lstResult}" var="row" rendered="{!isShow}">
+                <apex:column value="{!row.RecordName}">
+                    <apex:facet name="header">Record Name</apex:facet>
+                </apex:column>
+                <apex:column value="{!row.RecordType}">
+                    <apex:facet name="header">Record Type</apex:facet>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Counter</apex:facet>
+                    <span id="idCounter{!row.RecordId}">
+                        {!row.RecordCounter}
+                    </span>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Click to update counter</apex:facet>
+                    <a onclick="updateCounter('{!row.RecordId}', '{!row.RecordType}'); return false;">Increment Counter</a>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+    <script type="text/javascript">
+        function updateCounter(rdId, rdType){
+            var rdCount = document.getElementById('idCounter' + rdId).innerHTML;
+            var objRecord = {
+                "RecordType" : rdType,
+                "RecordId" : rdId,
+                "RecordCounter" : rdCount
+            };
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.SearchAccountAndContactController.updateCounter}',
+                objRecord, 
+                function(result, event){
+                    if (event.status) {
+                        console.log('RESULT : ' + JSON.stringify(result));
+                        document.getElementById('idCounter' + rdId).innerHTML = result.RecordCounter
+                    } else if (event.type === 'exception') {
+                        //document.getElementById("responseErrors").innerHTML = 
+                        //    event.message + "<br/>\n<pre>" + event.where + "</pre>";
+                    } else {
+                        //document.getElementById("responseErrors").innerHTML = event.message;
+                        console.log('ERROR : ' + event.message);
+                    }
+                }, {escape: true}
+            );
+        }
+    </script>
+</apex:page>

@@ -1,0 +1,31 @@
+{
+  "status": 0,
+  "result": [
+    {
+      "createdById": "0055f000007ClEjAAK",
+      "createdByName": "Thao Doan",
+      "createdDate": "2021-12-26T21:14:13.000Z",
+      "fileName": "triggers/ContactTrigger.trigger",
+      "fullName": "ContactTrigger",
+      "id": "01q5f000000rAJsAAM",
+      "lastModifiedById": "0055f000007ClEjAAK",
+      "lastModifiedByName": "Thao Doan",
+      "lastModifiedDate": "2021-12-26T21:14:13.000Z",
+      "manageableState": "unmanaged",
+      "type": "ApexTrigger"
+    },
+    {
+      "createdById": "0055f000007ClEjAAK",
+      "createdByName": "Thao Doan",
+      "createdDate": "2021-12-26T21:13:20.000Z",
+      "fileName": "triggers/AccountTrigger.trigger",
+      "fullName": "AccountTrigger",
+      "id": "01q5f000000rAJnAAM",
+      "lastModifiedById": "0055f000007ClEjAAK",
+      "lastModifiedByName": "Thao Doan",
+      "lastModifiedDate": "2021-12-26T21:13:20.000Z",
+      "manageableState": "unmanaged",
+      "type": "ApexTrigger"
+    }
+  ]
+}

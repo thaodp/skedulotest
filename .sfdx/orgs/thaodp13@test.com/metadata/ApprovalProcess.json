@@ -1,0 +1,15 @@
+{
+  "status": 0,
+  "result": {
+    "createdById": "0055f000007ClEjAAK",
+    "createdByName": "Thao Doan",
+    "createdDate": "2021-12-26T21:19:24.000Z",
+    "fileName": "approvalProcesses/Contact.Approve_Contact.approvalProcess",
+    "fullName": "Contact.Approve_Contact",
+    "id": "04a5f000000pQK9AAM",
+    "lastModifiedById": "0055f000007ClEjAAK",
+    "lastModifiedByName": "Thao Doan",
+    "lastModifiedDate": "2021-12-26T21:25:32.000Z",
+    "type": "ApprovalProcess"
+  }
+}
